@@ -10,16 +10,17 @@ import {
 } from "./contact-actions";
 import { ContactLink } from "./contact-link";
 import { MobileContact } from "./mobile-contact";
+import { BrandMark } from "./brand-mark";
 export { ContactButton } from "./contact-actions";
 
 export function Logo() {
   return (
     <Link href="/" className="logo">
       <span className="logo-symbol">
-        <Icon name="tool" size={28} />
+        <BrandMark />
       </span>
       <span>
-        <strong>{business.name}</strong>
+        <strong>Beyaz Eşya Servisi</strong>
         <small>Arıza · Bakım · Onarım</small>
       </span>
     </Link>
@@ -51,7 +52,7 @@ export function Header() {
           )}
           <span className="topbar-disclosure">
             <Icon name="shield" size={15} />
-            Yetkili olmayan özel servis
+            Bağımsız özel servis
           </span>
         </div>
       </div>
@@ -94,10 +95,6 @@ export function Footer() {
               Gebze beyaz eşya tamiri, bakım ve arıza süreçleri için bilgi ve
               iletişim.
             </p>
-            <span className="footer-note">
-              <Icon name="shield" size={15} />
-              Bağımsız özel servis
-            </span>
           </div>
           <div>
             <h2>Hızlı bağlantılar</h2>
@@ -107,6 +104,9 @@ export function Footer() {
             <Link href="/hizmet-bolgeleri/gebze/">Gebze servis kapsamı</Link>
             <Link href="/hizmet-bolgeleri/darica/">
               Darıca beyaz eşya servisi
+            </Link>
+            <Link href="/hizmet-bolgeleri/cayirova/">
+              Çayırova bakım ve onarım
             </Link>
             <Link href="/blog/">Bilgi & rehber</Link>
           </div>
@@ -136,8 +136,7 @@ export function Footer() {
               Servis talebi ve iletişim <Icon name="arrow" size={15} />
             </Link>
             <p className="disclosure">
-              Markaların yetkili servisi değildir. Marka adları cihaz tanımlamak
-              amacıyla kullanılır.
+              Bağımsız özel teknik servis. Markaların yetkili servisi değildir.
             </p>
           </div>
         </div>

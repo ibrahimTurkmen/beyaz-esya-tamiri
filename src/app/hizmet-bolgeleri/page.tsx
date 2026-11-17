@@ -17,31 +17,20 @@ export default function RegionsPage() {
     >
       <div className="region-grid">
         {publishedRegions.map((region) => (
-          <section key={region.slug}>
+          <section key={region.slug} id={region.slug}>
             <h2>{region.name}</h2>
-            <p>{region.intro}</p>
-            <Link
-              className="text-link"
-              href={`/hizmet-bolgeleri/${region.slug}/`}
-            >
-              {region.name} servis kapsamını inceleyin →
-            </Link>
+            <p>{region.summary}</p>
+            <div className="card-actions">
+              <Link
+                className="text-link"
+                href={`/hizmet-bolgeleri/${region.slug}/`}
+              >
+                Servis kapsamını inceleyin →
+              </Link>
+              <ContactActions context={region.contactContext} />
+            </div>
           </section>
         ))}
-        <section id="cayirova">
-          <h2>Çayırova</h2>
-          <p>
-            Çayırova, doğrulanmış hizmet bölgelerimiz arasındadır. Cihazınızın
-            modelini, arıza belirtisini ve mahalleyi ileterek adres uygunluğunu
-            öğrenebilirsiniz. Ziyaret saati önceden görüşülür.
-          </p>
-          <ContactActions context="Çayırova’da beyaz eşya tamiri" />
-        </section>
-      </div>
-      <div className="notice">
-        Hizmet bölgesi bilgisi, bu ilçelerde fiziksel şube bulunduğu anlamına
-        gelmez. Çevre adresler için uygunluk ayrıca teyit edilir; ziyaret ve
-        onarım süresi hakkında doğrulanmamış taahhüt verilmez.
       </div>
     </ContentPage>
   );

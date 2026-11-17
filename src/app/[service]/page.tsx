@@ -97,7 +97,7 @@ export default async function DevicePage({
         <div className="related-links">
           <Link href="/hizmet-bolgeleri/gebze/">Gebze servis kapsamı →</Link>
           <Link href="/hizmet-bolgeleri/darica/">Darıca servis kapsamı →</Link>
-          <Link href="/hizmet-bolgeleri/#cayirova">Çayırova için bilgi →</Link>
+          <Link href="/hizmet-bolgeleri/cayirova/">Çayırova için bilgi →</Link>
         </div>
         <h2>Hizmet verilen markalar</h2>
         <p>

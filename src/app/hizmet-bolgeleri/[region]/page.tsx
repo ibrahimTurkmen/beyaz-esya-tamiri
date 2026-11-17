@@ -33,15 +33,11 @@ export default async function RegionPage({
   if (!item) notFound();
   return (
     <ContentPage
-      title={
-        item.slug === "gebze"
-          ? "Gebze’de servis kapsamı ve randevu planı"
-          : "Darıca beyaz eşya tamiri ve özel servis"
-      }
+      title={item.heading}
       intro={item.intro}
       path={`/hizmet-bolgeleri/${item.slug}/`}
       parent={{ name: "Hizmet bölgeleri", path: "/hizmet-bolgeleri/" }}
-      contactContext={`${item.name === "Gebze" ? "Gebze’de" : "Darıca’da"} beyaz eşya tamiri`}
+      contactContext={item.contactContext}
     >
       <JsonLd
         data={{

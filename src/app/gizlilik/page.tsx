@@ -36,6 +36,12 @@ export default function PrivacyPage() {
         </p>
         <h2>Harici hizmetler ve hosting</h2>
         <p>
+          Google Maps bağlantıları harici harita hizmetini açar. Sayfa içine
+          harita eklenmişse yalnızca “Google haritasını göster” düğmesine
+          bastığınızda Google’dan yüklenir. Bu aşamada bağlantı bilgileriniz
+          Google’a iletilir ve Google’ın kendi gizlilik koşulları uygulanır.
+        </p>
+        <p>
           WhatsApp’ta paylaştığınız bilgiler bu hizmetin kendi koşullarına
           tabidir. Kimlik, ödeme veya hassas bilgi paylaşmadan önce
           gerekliliğini değerlendirin. Hosting sağlayıcısının erişim ve güvenlik

@@ -3,6 +3,10 @@ import AxeBuilder from "@axe-core/playwright";
 import { articles, devices } from "../src/lib/content";
 import { brands } from "../src/lib/brands";
 import { publishedRegions } from "../src/content/regions";
+import {
+  customerExperiences,
+  publishableExperiences,
+} from "../src/content/customer-experiences";
 const routes = [
   "/",
   "/markalar/",
@@ -20,6 +24,214 @@ const routes = [
   "/gizlilik/",
   "/kvkk/",
 ];
+test("İlçe kartları ve detay CTA’ları tam, mesajları doğru ve hizaları tutarlı", async ({
+  page,
+}) => {
+  for (const width of [1440, 375]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/hizmet-bolgeleri/");
+    const cards = page.locator(".region-grid > section");
+    await expect(cards).toHaveCount(3);
+    for (const region of publishedRegions) {
+      const card = page.locator(`.region-grid #${region.slug}`);
+      await expect(card.locator("h2")).toHaveText(region.name);
+      await expect(card.locator('a[data-contact="phone"]')).toHaveText(
+        "0532 593 92 23",
+      );
+      await expect(card.locator('a[data-contact="phone"]')).toHaveAttribute(
+        "href",
+        "tel:+905325939223",
+      );
+      const whatsapp = card.getByRole("link", {
+        name: "WhatsApp'tan Yazın",
+        exact: true,
+      });
+      await expect(whatsapp).toBeVisible();
+      const message = new URL(
+        (await whatsapp.getAttribute("href"))!,
+      ).searchParams.get("text");
+      const expected = {
+        gebze:
+          "Merhaba, Gebze'de beyaz eşya tamiri için servis talebi oluşturmak istiyorum.",
+        darica:
+          "Merhaba, Darıca'da beyaz eşya tamiri için servis talebi oluşturmak istiyorum.",
+        cayirova:
+          "Merhaba, Çayırova'da beyaz eşya tamiri için servis talebi oluşturmak istiyorum.",
+      };
+      expect(message).toBe(expected[region.slug]);
+      await expect(
+        card.getByRole("link", { name: "Servis kapsamını inceleyin →" }),
+      ).toHaveAttribute("href", `/hizmet-bolgeleri/${region.slug}/`);
+    }
+    const boxes = await cards.evaluateAll((els) =>
+      els.map((el) => {
+        const box = el.getBoundingClientRect();
+        const actions = el
+          .querySelector(".card-actions")!
+          .getBoundingClientRect();
+        const buttons = [...el.querySelectorAll(".button")].map(
+          (b) => b.getBoundingClientRect().width,
+        );
+        return {
+          height: box.height,
+          left: box.left,
+          bottom: box.bottom,
+          top: box.top,
+          actions: actions.top,
+          buttons,
+          innerWidth: actions.width,
+        };
+      }),
+    );
+    expect(new Set(boxes.map((b) => Math.round(b.height))).size).toBe(1);
+    if (width === 1440) {
+      expect(new Set(boxes.map((b) => b.actions)).size).toBe(1);
+    } else {
+      expect(new Set(boxes.map((b) => b.left)).size).toBe(1);
+      expect(boxes[1].top).toBeGreaterThan(boxes[0].bottom);
+      for (const box of boxes)
+        for (const buttonWidth of box.buttons)
+          expect(Math.abs(buttonWidth - box.innerWidth)).toBeLessThan(1);
+    }
+    await page.screenshot({
+      path: `test-results/regions-${width}.png`,
+      fullPage: true,
+    });
+    for (const region of publishedRegions) {
+      await page.goto(`/hizmet-bolgeleri/${region.slug}/`);
+      await expect(page.locator("h1")).toHaveText(region.heading);
+      const links = await page
+        .locator(
+          'main a[data-contact="whatsapp"], .mobile-contact a[data-contact="whatsapp"]',
+        )
+        .evaluateAll((els) => els.map((el) => el.getAttribute("href")!));
+      expect(links.length).toBeGreaterThanOrEqual(2);
+      for (const link of links)
+        expect(new URL(link).searchParams.get("text")).toBe(
+          `Merhaba, ${region.contactContext} için servis talebi oluşturmak istiyorum.`,
+        );
+    }
+  }
+});
+
+test("Tüm marka kartları detay bağlantısı ve markaya özel WhatsApp içerir", async ({
+  page,
+}) => {
+  for (const width of [1440, 375]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/markalar/");
+    await expect(page.locator(".brand-list > div")).toHaveCount(brands.length);
+    for (const brand of brands) {
+      const card = page.locator(".brand-list > div").filter({
+        has: page.getByRole("heading", { name: brand.name, exact: true }),
+      });
+      const link = card.getByRole("link", {
+        name: `${brand.name} İçin Yazın`,
+        exact: true,
+      });
+      await expect(link).toBeVisible();
+      expect(
+        new URL((await link.getAttribute("href"))!).searchParams.get("text"),
+      ).toBe(
+        `Merhaba, ${brand.name} beyaz eşyam için teknik servis hizmeti almak istiyorum.`,
+      );
+      await expect(
+        card.getByRole("link", { name: `${brand.name} özel servis kapsamı →` }),
+      ).toHaveAttribute("href", `/markalar/${brand.slug}/`);
+    }
+    await page.screenshot({
+      path: `test-results/brands-${width}.png`,
+      fullPage: true,
+    });
+  }
+});
+
+test("Yayın onayı ve cihaz bilgisi olmayan müşteri kayıtları gizlidir", async ({
+  request,
+}) => {
+  expect(customerExperiences).toHaveLength(10);
+  expect(publishableExperiences(customerExperiences)).toEqual([]);
+  const fixture = {
+    ...customerExperiences[0],
+    publicationApproved: true,
+    approvalDate: "2026-11-17",
+  };
+  expect(publishableExperiences([fixture])).toHaveLength(1);
+  expect(publishableExperiences([{ ...fixture, appliance: "" }])).toEqual([]);
+  expect(publishableExperiences([{ ...fixture, approvalDate: null }])).toEqual(
+    [],
+  );
+  const html = await (await request.get("/")).text();
+  for (const entry of customerExperiences.filter((e) => e.name))
+    expect(html).not.toContain(entry.name);
+  expect(html).not.toContain("aggregateRating");
+  expect(html).not.toContain("experiences-title");
+});
+
+test("Google harita bağlantıları hafif; yeni logo ve uygulama ikonları sunulur", async ({
+  page,
+  request,
+}) => {
+  const googleRequests: string[] = [];
+  page.on("request", (req) => {
+    if (/google\.(com|net)/.test(req.url())) googleRequests.push(req.url());
+  });
+  for (const width of [1440, 375]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    await expect(page.locator(".service-map iframe")).toHaveCount(0);
+    for (const name of ["Gebze", "Darıca", "Çayırova"]) {
+      const link = page
+        .locator(".map-links")
+        .getByRole("link", { name: `${name} ↗` });
+      const url = new URL((await link.getAttribute("href"))!);
+      expect(url.hostname).toBe("www.google.com");
+      expect(url.searchParams.get("api")).toBe("1");
+      expect(url.searchParams.get("query")).toBe(`${name}, Kocaeli`);
+    }
+    const mapButton = page.getByRole("button", {
+      name: "Google haritasını göster",
+    });
+    if (await mapButton.count()) {
+      await page.route("https://www.google.com/maps/embed/**", (route) =>
+        route.fulfill({
+          contentType: "text/html",
+          body: "<p>Map test fixture</p>",
+        }),
+      );
+      await mapButton.click();
+      await expect(page.locator(".service-map iframe")).toHaveAttribute(
+        "src",
+        /\/maps\/embed\/v1\/view/,
+      );
+      await page.unroute("https://www.google.com/maps/embed/**");
+    } else {
+      await expect(
+        page.getByRole("link", { name: "Google Maps’te aç" }),
+      ).toHaveAttribute("href", /map_action=map/);
+      expect(googleRequests).toEqual([]);
+    }
+    await expect(page.locator(".header .logo strong")).toHaveText(
+      "Beyaz Eşya Servisi",
+    );
+    await expect(page.locator(".header .logo-symbol svg")).toHaveAttribute(
+      "viewBox",
+      "0 0 64 64",
+    );
+  }
+  const manifest = await (await request.get("/manifest.webmanifest")).json();
+  expect(manifest.name).toBe("Beyaz Eşya Servisi");
+  for (const icon of manifest.icons)
+    expect((await request.get(icon.src)).status()).toBe(200);
+  expect((await request.get("/icon.svg")).status()).toBe(200);
+  expect((await request.get("/favicon.ico")).status()).toBe(200);
+  expect((await request.get("/icons/app-180.png")).status()).toBe(200);
+  await page.goto("/iletisim/");
+  await expect(page.locator("main")).not.toContainText(
+    "tek başına kesinleşmiş randevu",
+  );
+  await expect(page.locator(".contact-aside .notice")).toHaveCount(0);
+});
 const representatives = [
   "/",
   "/markalar/arcelik/",
@@ -28,6 +240,9 @@ const representatives = [
   "/blog/buzdolabi-motor-arizasi/",
   "/iletisim/",
   "/hizmet-bolgeleri/darica/",
+  "/hizmet-bolgeleri/",
+  "/hizmet-bolgeleri/cayirova/",
+  "/markalar/",
 ];
 for (const width of [1440, 768, 375]) {
   test(`${width}px: yazılar en az 12px, taşma yok ve iletişim erişilebilir`, async ({
@@ -217,7 +432,7 @@ test("Her sayfada özgün metadata, tek H1, canonical, çalışan bağlantılar 
       const url = new URL(href);
       expect(url.origin + url.pathname).toBe("https://wa.me/905325939223");
       expect(url.searchParams.get("text")).toMatch(
-        /^Merhaba, .+servis talebi oluşturmak istiyorum\.$/,
+        /^Merhaba, .+(servis talebi oluşturmak|teknik servis hizmeti almak) istiyorum\.$/,
       );
     }
     if (path !== "/") expect(html).toContain('"@type":"BreadcrumbList"');
@@ -235,7 +450,7 @@ test("Marka WhatsApp mesajı, makale şeması ve kaynak bağlantıları tutarlı
       .first()
       .getAttribute("href");
     expect(new URL(href!).searchParams.get("text")).toBe(
-      `Merhaba, ${brand.name} beyaz eşyamın tamiri için servis talebi oluşturmak istiyorum.`,
+      `Merhaba, ${brand.name} beyaz eşyam için teknik servis hizmeti almak istiyorum.`,
     );
     await expect(page.locator("main .notice")).toContainText(
       "yetkili servisi değiliz",

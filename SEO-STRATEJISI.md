@@ -8,34 +8,36 @@ Kullanıcının 17 Kasım 2026 tarihli Keyword Planner özetinden yararlanıldı
 
 ## Birincil niyetler
 
-| Sayfa | Birincil niyet | Rolü |
-| --- | --- | --- |
-| `/` | Gebze beyaz eşya servisi / tamiri, genel beyaz eşya tamircisi | Tüm cihaz, marka ve bölge yollarının ana ticari girişi |
-| `/buzdolabi-tamiri/` | Buzdolabı tamircisi ve onarım | Genel soğutma hizmeti; motor/fan/conta rehberlerini hizmete bağlar |
-| `/camasir-makinesi-tamiri/` | Çamaşır makinesi tamiri | Su alma, tahliye, kilit gibi belirtilerden servis görüşmesine geçiş |
-| `/bulasik-makinesi-tamiri/` | Bulaşık makinesi tamiri | Yıkama, tahliye ve ısıtma hizmeti |
-| `/firin-tamiri/`, `/kurutma-makinesi-tamiri/` | İlgili cihazın onarımı | Gerçek hizmet kapsamının tamamlanması |
-| `/markalar/` | Markaya göre özel servis seçimi | Desteklenen markaları ve öncelikli detay sayfalarını toplar |
-| `/markalar/arcelik/` | Arçelik tamiri / Arçelik özel servis | Marka cihazları, örnek belirtiler, yerel kapsam |
-| `/markalar/bosch/` | Bosch özel servis | Model bilgisi, E18 örneği, ısıtma/kurutma ayrımı |
-| `/markalar/beko/` | Beko özel servis | Kapak emniyeti, model bazlı su alma uyarısı, cihaz hizmeti |
-| `/hizmet-bolgeleri/` | Hizmet verilen ilçeler | Gebze, Darıca, Çayırova kapsamı ve doğru bölge bağlantısı |
-| `/hizmet-bolgeleri/gebze/` | Gebze adresi için servis kapsamı/randevu | Ana sayfayı kopyalamadan adres, erişim ve ziyaret hazırlığı |
-| `/hizmet-bolgeleri/darica/` | Darıca beyaz eşya servisi / tamiri | Yerel cihaz seçimi, iletişim ve onarım değerlendirmesi |
-| `/blog/` ve kategori/arşivler | Arıza bilgisine ulaşma | Ticari cihaz sayfalarını destekleyen rehber dizini |
-| `/iletisim/` | Arama / WhatsApp görüşmesi | Son iletişim adımı |
+| Sayfa                                         | Birincil niyet                                                | Rolü                                                                                       |
+| --------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `/`                                           | Gebze beyaz eşya servisi / tamiri, genel beyaz eşya tamircisi | Tüm cihaz, marka ve bölge yollarının ana ticari girişi                                     |
+| `/buzdolabi-tamiri/`                          | Buzdolabı tamircisi ve onarım                                 | Genel soğutma hizmeti; motor/fan/conta rehberlerini hizmete bağlar                         |
+| `/camasir-makinesi-tamiri/`                   | Çamaşır makinesi tamiri                                       | Su alma, tahliye, kilit gibi belirtilerden servis görüşmesine geçiş                        |
+| `/bulasik-makinesi-tamiri/`                   | Bulaşık makinesi tamiri                                       | Yıkama, tahliye ve ısıtma hizmeti                                                          |
+| `/firin-tamiri/`, `/kurutma-makinesi-tamiri/` | İlgili cihazın onarımı                                        | Gerçek hizmet kapsamının tamamlanması                                                      |
+| `/markalar/`                                  | Markaya göre özel servis seçimi                               | Desteklenen markaları ve öncelikli detay sayfalarını toplar                                |
+| `/markalar/arcelik/`                          | Arçelik tamiri / Arçelik özel servis                          | Marka cihazları, örnek belirtiler, yerel kapsam                                            |
+| `/markalar/bosch/`                            | Bosch özel servis                                             | Model bilgisi, E18 örneği, ısıtma/kurutma ayrımı                                           |
+| `/markalar/beko/`                             | Beko özel servis                                              | Kapak emniyeti, model bazlı su alma uyarısı, cihaz hizmeti                                 |
+| `/hizmet-bolgeleri/`                          | Hizmet verilen ilçeler                                        | Gebze, Darıca, Çayırova kapsamı ve doğru bölge bağlantısı                                  |
+| `/hizmet-bolgeleri/gebze/`                    | Gebze adresi için servis kapsamı/randevu                      | Ana sayfayı kopyalamadan adres, erişim ve ziyaret hazırlığı                                |
+| `/hizmet-bolgeleri/darica/`                   | Darıca beyaz eşya servisi / tamiri                            | Yerel cihaz seçimi, iletişim ve onarım değerlendirmesi                                     |
+| `/hizmet-bolgeleri/cayirova/`                 | Çayırova beyaz eşya bakımı ve onarımı                         | Bakım belirtileri, kurulum erişimi, ziyaret ve işlem sonrası kullanım bilgisi              |
+| Diğer sekiz `/markalar/{marka}/` sayfası      | Desteklenen markanın özel servis kapsamı                      | Model/kurulum ve farklı hizmet ihtiyaçlarını açıklayan özgün içerik; markaya özel WhatsApp |
+| `/blog/` ve kategori/arşivler                 | Arıza bilgisine ulaşma                                        | Ticari cihaz sayfalarını destekleyen rehber dizini                                         |
+| `/iletisim/`                                  | Arama / WhatsApp görüşmesi                                    | Son iletişim adımı                                                                         |
 
 Her marka + cihaz + ilçe kombinasyonu için ayrı sayfa üretilmedi. “En yakın” aramalarına gerçek hizmet alanı ve iletişimle yanıt verilir; sahte adres veya kesin yakınlık iddiası kullanılmaz. İlçe sayfaları birbirinin ad değiştirilmiş kopyası değildir. Yetkili servis niyeti açık özel servis açıklamasıyla ayrıştırılır.
 
 ## İçerik kümeleri
 
-| Ana hizmet | Destekleyen bilgi niyetleri |
-| --- | --- |
-| Buzdolabı tamiri | Soğutmama (mevcut), motor arızası (yeni), fan motoru arızası (yeni). Kapak contası ve hava dolaşımı soğutmama rehberi/hizmet içinde ele alınır. |
-| Çamaşır makinesi tamiri | Su almama (mevcut), su boşaltmama/tahliye pompası (yeni), kapak kilidi (yeni) |
-| Bulaşık makinesi tamiri | Koku/tahliye (mevcut), ısıtmama/rezistans (yeni). Pompa konusu hizmet ve mevcut koku rehberindeki tahliye bağlantısıyla kapsanır. |
+| Ana hizmet              | Destekleyen bilgi niyetleri                                                                                                                     |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Buzdolabı tamiri        | Soğutmama (mevcut), motor arızası (yeni), fan motoru arızası (yeni). Kapak contası ve hava dolaşımı soğutmama rehberi/hizmet içinde ele alınır. |
+| Çamaşır makinesi tamiri | Su almama (mevcut), su boşaltmama/tahliye pompası (yeni), kapak kilidi (yeni)                                                                   |
+| Bulaşık makinesi tamiri | Koku/tahliye (mevcut), ısıtmama/rezistans (yeni). Pompa konusu hizmet ve mevcut koku rehberindeki tahliye bağlantısıyla kapsanır.               |
 
-Yazılar birbirine ve ilgili cihaz hizmetine bağlanır; hizmet sayfaları da bu rehberlere geri bağlantı verir. Marka sayfaları cihaz ve bölge sayfalarına, ana sayfa üç marka detayına ve bölgelere bağlanır. Sekiz rehberin tamamı kategori ve gerçek sayfalama bağlantılarıyla erişilebilirdir.
+Yazılar birbirine ve ilgili cihaz hizmetine bağlanır; hizmet sayfaları da bu rehberlere geri bağlantı verir. Marka sayfaları cihaz ve bölge sayfalarına, ana sayfa on bir marka detayına ve üç ilçeye bağlanır. Sekiz rehberin tamamı kategori ve gerçek sayfalama bağlantılarıyla erişilebilirdir.
 
 ## Teknik içerik kontrolü
 

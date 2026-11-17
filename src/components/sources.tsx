@@ -1,5 +1,6 @@
 import { sources, type SourceKey } from "@/lib/sources";
 export function Sources({ items }: { items: readonly SourceKey[] }) {
+  if (!items.length) return null;
   return (
     <aside className="source-notes" aria-label="Teknik kaynaklar">
       <h2>Teknik kaynaklar</h2>

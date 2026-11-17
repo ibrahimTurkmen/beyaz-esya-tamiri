@@ -7,6 +7,8 @@ import { brandHref } from "@/lib/brands";
 import { devices, articles, faq } from "@/lib/content";
 import { business } from "@/lib/business";
 import { BusinessSchema, metadata as makeMetadata } from "@/lib/seo";
+import { CustomerExperiences } from "@/components/customer-experiences";
+import { ServiceMap } from "@/components/service-map";
 export const metadata = makeMetadata(
   "Gebze Beyaz Eşya Servisi ve Tamiri | Bağımsız Özel Servis",
   "Gebze, Darıca ve Çayırova’da beyaz eşya tamircisi: buzdolabı, çamaşır ve bulaşık makinesi bakım ve onarımı. Özel servis için arayın veya WhatsApp’tan yazın.",
@@ -200,22 +202,13 @@ export default function Home() {
       </section>
       <section id="bolgeler" className="area-section">
         <div className="container area-layout">
-          <div className="area-art" aria-hidden="true">
-            <div className="area-orbit orbit-one" />
-            <div className="area-orbit orbit-two" />
-            <div className="area-orbit orbit-three" />
-            <span className="area-dot dot-one" />
-            <span className="area-dot dot-two" />
-            <span className="area-dot dot-three" />
-            <div className="area-center">
-              <Icon name="pin" size={38} />
-              <strong>Gebze</strong>
-              <span>KOCAELİ</span>
-            </div>
-            <span className="area-label label-one">Darıca</span>
-            <span className="area-label label-two">Çayırova</span>
-            <span className="area-water">MARMARA DENİZİ</span>
-          </div>
+          <ServiceMap
+            embedUrl={
+              process.env.GOOGLE_MAPS_EMBED_KEY
+                ? `https://www.google.com/maps/embed/v1/view?key=${encodeURIComponent(process.env.GOOGLE_MAPS_EMBED_KEY)}&center=40.797,29.366&zoom=12&language=tr`
+                : undefined
+            }
+          />
           <div className="area-copy">
             <p className="eyebrow">YAKININIZDAKİ ÇÖZÜM</p>
             <h2>
@@ -240,13 +233,14 @@ export default function Home() {
               <Link href="/hizmet-bolgeleri/darica/">
                 Darıca beyaz eşya servisi →
               </Link>
-              <Link href="/hizmet-bolgeleri/#cayirova">
+              <Link href="/hizmet-bolgeleri/cayirova/">
                 Çayırova hizmet bilgisi →
               </Link>
             </div>
           </div>
         </div>
       </section>
+      <CustomerExperiences />
       <section className="container questions-section">
         <div className="customer-panel">
           <p className="eyebrow">ŞEFFAF İLETİŞİM</p>
@@ -271,7 +265,7 @@ export default function Home() {
             </a>
           ) : (
             <div className="review-note">
-              <Icon name="chat" size={24} />
+              <Icon name="shield" size={24} />
               <span>
                 İşlem ve ücret hakkında bilgi alın,
                 <br />

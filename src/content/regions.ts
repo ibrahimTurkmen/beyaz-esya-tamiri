@@ -2,6 +2,10 @@ export const publishedRegions = [
   {
     slug: "gebze",
     name: "Gebze",
+    heading: "Gebze’de servis kapsamı ve randevu planı",
+    contactContext: "Gebze'de beyaz eşya tamiri",
+    summary:
+      "Gebze’de çamaşır makinesi, buzdolabı ve diğer beyaz eşyalarınız için bakım ve onarım. Cihaz ve mahalle bilgilerinizi paylaşarak servis ziyaretinizi planlayın.",
     title: "Gebze’de Beyaz Eşya Servis Kapsamı ve Randevu",
     description:
       "Gebze’de beyaz eşya onarımı için cihaz, adres ve randevu bilgilerini netleştirin. Bakım, arıza tespiti ve özel servis kapsamını inceleyin.",
@@ -10,7 +14,7 @@ export const publishedRegions = [
     sections: [
       {
         heading: "Gebze adresiniz için randevu bilgileri",
-        text: "İlçe ile birlikte mahalleyi, cihaz türünü ve size uygun zaman aralığını paylaşın. Aynı ilçe içinde bulunmak tek başına belirli bir saatte ziyaret garantisi vermez. Günlük plan ve adres uygunluğu telefon veya WhatsApp görüşmesinde netleştirilir. Sayfada bir şube ya da ziyaret edilebilir işyeri adresi ilan edilmemektedir.",
+        text: "Mahallenizi, cihaz türünü ve size uygun zaman aralığını paylaşın. Gebze’de servis ziyaretinin günü ve saati, adresiniz ve günlük çalışma planı değerlendirilerek telefon veya WhatsApp üzerinden birlikte belirlenir.",
       },
       {
         heading: "Yerinde arıza tespiti öncesinde",
@@ -22,13 +26,17 @@ export const publishedRegions = [
       },
       {
         heading: "Ücreti ve işlemi onaylamadan önce",
-        text: "Tespit veya ulaşım bedeli bulunup bulunmadığını randevu sırasında sorun. Onarım önerisinde işçilik ve parça tutarını ayrı öğrenin. Özel servis işlemleri için markanın resmi yetkili servis randevusu oluşturulmaz. Kesinleşmemiş garanti süresi, sabit fiyat veya aynı gün onarım sözü verilmez.",
+        text: "Arıza tespiti ve ziyaret ücretini randevu sırasında öğrenebilirsiniz. Cihaz incelendikten sonra önerilen onarım, işçilik ve parça bedeli açıklanır; yapılacak işlem onayınızla belirlenir.",
       },
     ],
   },
   {
     slug: "darica",
     name: "Darıca",
+    heading: "Darıca beyaz eşya tamiri ve özel servis",
+    contactContext: "Darıca'da beyaz eşya tamiri",
+    summary:
+      "Darıca’da soğutmayan buzdolabı, su boşaltmayan çamaşır makinesi veya programı tamamlamayan bulaşık makinesi için arıza tespiti ve tamir desteğine ulaşın.",
     title: "Darıca Beyaz Eşya Servisi ve Tamiri | Özel Teknik Servis",
     description:
       "Darıca’da buzdolabı, çamaşır ve bulaşık makinesi tamiri için özel servis. Model, arıza ve adresinizi telefon veya WhatsApp’tan paylaşın.",
@@ -49,7 +57,38 @@ export const publishedRegions = [
       },
       {
         heading: "Tek site, ortak iletişim hattı",
-        text: "Darıca için ayrı bir marka şubesi veya resmi yetkili servis iddiası yoktur. Gebze, Darıca ve Çayırova hizmetleri aynı iletişim hattından görüşülür. Cihazınızın üretici garantisi devam ediyorsa önce resmi garanti koşullarını kontrol edin. Bize telefonla ulaşarak özel servis kapsamını ve randevu uygunluğunu sorabilirsiniz.",
+        text: "Darıca’daki bakım ve onarım taleplerinizi ortak iletişim hattımıza iletebilirsiniz. Aynı adreste birden fazla cihaz için destek gerekiyorsa görüşmede belirtin; cihazların ihtiyaçlarını birlikte değerlendirelim.",
+      },
+    ],
+  },
+  {
+    slug: "cayirova",
+    name: "Çayırova",
+    heading: "Çayırova’da beyaz eşya bakımı ve arıza onarımı",
+    contactContext: "Çayırova'da beyaz eşya tamiri",
+    title: "Çayırova Beyaz Eşya Tamiri ve Bakımı | Özel Servis",
+    description:
+      "Çayırova’da fırın, kurutma makinesi, buzdolabı ve yıkama grubu için bakım ve arıza onarımı. Cihazınıza uygun servis planını telefon veya WhatsApp’tan görüşün.",
+    summary:
+      "Çayırova’da fırın ve kurutma makinesinden yıkama ve soğutma grubuna kadar bakım ihtiyaçlarınızı görüşün. Model ve arıza bilgisine göre onarım sürecini birlikte değerlendirelim.",
+    intro:
+      "Çayırova’daki evinizde beyaz eşyanın performansı düştüğünde veya cihaz çalışmayı bıraktığında bakım ve tamir için bize ulaşabilirsiniz. Fırın, kurutma makinesi, buzdolabı, çamaşır ve bulaşık makinelerindeki sorunu dinleyerek servis hazırlığını cihazınıza göre yapıyoruz.",
+    sections: [
+      {
+        heading: "Bakım ihtiyacını erken paylaşın",
+        text: "Kurutmanın uzaması, fırının yemeği eşit pişirmemesi veya yıkama sonucunun değişmesi günlük kullanımı etkileyebilir. Çayırova’dan ararken sorunun ne zamandır sürdüğünü ve her programda tekrarlanıp tekrarlanmadığını anlatın. Bakım talebinizi ya da çalışmayı durduran arızayı ayrı belirtmeniz, ziyaret öncesi hazırlığa yardımcı olur.",
+      },
+      {
+        heading: "Ankastre ve üst üste kurulu cihazlar",
+        text: "Cihazın ankastre olması veya kurutma makinesinin çamaşır makinesi üzerine yerleştirilmesi çalışma alanını etkiler. Randevu görüşmesinde kurulum biçimini ve cihaza erişimi tarif edebilirsiniz. Ağır cihazları taşımadan, kapağını veya gövdesini sökmeden marka ve model bilgisini paylaşmanız yeterlidir.",
+      },
+      {
+        heading: "Çayırova adresiniz için ziyaret planı",
+        text: "Mahallenizi ve size uygun zaman aralığını telefonla söyleyebilir veya bu sayfadaki hazır WhatsApp mesajına ekleyebilirsiniz. Birden fazla beyaz eşyanın bakımı gerekiyorsa cihazları tek tek yazın. Adres ve çalışma planı üzerinden ziyaret zamanı birlikte netleştirilir; her cihazın ihtiyacı ayrı değerlendirilir.",
+      },
+      {
+        heading: "Onarım sonrasında kullanım bilgisi",
+        text: "Arıza tespiti sonucunda yapılabilecek işlem ve varsa parça ihtiyacı açıklanır. İşlem ücretini öğrenip onay verdikten sonra onarım planlanır. Tamir edilen cihazın kullanımında dikkat edilecek noktaları ve yapılan işleme ilişkin bilgileri servis görüşmesinde sorabilirsiniz.",
       },
     ],
   },

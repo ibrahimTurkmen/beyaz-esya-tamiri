@@ -1,6 +1,16 @@
-# SEO ve dönüşüm güncellemesi — 17 Kasım 2026
+# Tasarım, UX ve hizmet bölgeleri — 17 Kasım 2026
 
 Bu rapor önceki teslimatın yerine geçer. Mevcut Next.js mimarisi, tasarım dili, görseller ve URL’ler korundu.
+
+## Son düzenlemeler
+
+- **Gebze, Darıca ve Çayırova kartlarının tamamı** özgün kısa açıklama, “Servis kapsamını inceleyin →”, mavi **0532 593 92 23** ve yeşil **WhatsApp'tan Yazın** içerir. Kartlar masaüstünde ve mobilde eşit yükseklikte; bağlantılar ve düğmeler alta hizalı, mobilde tek sütun ve tam genişliktedir.
+- İlçe mesajları kullanıcının verdiği metinlerle birebir eşleşir. Çayırova için özgün içerikli `/hizmet-bolgeleri/cayirova/` eklendi; üç ilçenin title, H1, description ve canonical bilgileri ayrıdır. Detay sayfalarında ve mobil çubukta ilgili ilçe bağlamı korunur.
+- İletişim sayfasındaki belirtilen uzun açıklama kaldırıldı. Bölge ve marka gövdelerindeki tekrarlar sadeleştirildi. Marka sayfalarında **bağımsız özel servis / yetkili servis değildir** açıklaması açıkça korunur.
+- **11 marka kartının tamamında** detay bağlantısı ve “{Marka} İçin Yazın” düğmesi vardır. Marka mesajı merkezi yardımcıdan “Merhaba, {Marka} beyaz eşyam için teknik servis hizmeti almak istiyorum.” olarak üretilir. Eksik sekiz marka detay sayfası, özgün hizmet içeriği ve telefon/WhatsApp CTA’larıyla tamamlandı.
+- **Beyaz Eşya Servisi** adı korundu. Özgün SVG logo header/footer, SVG favicon, çok boyutlu ICO, Apple ve uygulama ikonlarında kullanılır. WhatsApp simgesi resmi `whatsapp.com` SVG yollarıyla değiştirildi.
+- Eski çizim kaldırıldı. **Google Maps anahtarı yokken çalışan bölge görünümü ve ilçe bağlantıları** gösterilir. İsteğe bağlı `GOOGLE_MAPS_EMBED_KEY` girildiğinde harita kullanıcı tıklamasıyla yüklenir; sahte işletme pini yoktur. Mevcut anahtarsız sürüm başlangıçta Google isteği yapmaz.
+- Müşteri deneyimleri için 10 kayıt alanı ve sade kart bileşeni hazırlandı. **Yayın onayı verilmediği için tüm kayıtlar gizlidir.** İsim, cihaz, özet ve tarihli yayın onayı eksiksiz olmadan kayıt gösterilmez. Dört cihaz bilgisi mevcut, Ahmed Fevzi Yüksel’in cihazı ve beş yeni kayıt eksiktir. Yıldız, avatar, Google yorumu veya uydurulmuş doğrudan alıntı yoktur. Yönetim ayrıntıları README’dedir.
 
 ## İletişim ve arayüz
 
@@ -14,7 +24,7 @@ Bu rapor önceki teslimatın yerine geçer. Mevcut Next.js mimarisi, tasarım di
 ## Güncellenen sayfalar
 
 - Ana sayfa: Gebze beyaz eşya tamiri/özel servis H1’i, kısa ticari açıklama, telefon/WhatsApp, marka ve bölge detaylarına bağlantılar.
-- Markalar: ticari hizmet kapsamı, Arçelik/Bosch/Beko detaylarına geçiş, diğer desteklenen markalara bağlamsal WhatsApp.
+- Markalar: 11 gerçek marka detayına geçiş ve her kartta markaya özel WhatsApp.
 - Beş cihaz sayfası: özgün ticari metadata, arıza grupları, mevcut güvenli kontroller, teknisyen sınırı, markalar, gerçek ilçeler ve ilgili blog bağlantıları.
 - Mevcut üç blog yazısı: özgün giriş/description, tarih, Article schema, resmi teknik kaynaklar, ilgili yazı/hizmet bağlantıları ve bağlamsal CTA. URL’leri ve içerik gövdeleri korundu.
 - İletişim: tamamen telefon/WhatsApp odaklı. Gizlilik/KVKK açıklamaları güncel veri akışına uyarlandı.
@@ -32,7 +42,7 @@ Bu rapor önceki teslimatın yerine geçer. Mevcut Next.js mimarisi, tasarım di
 - `/blog/buzdolabi-fan-motoru-arizasi/`
 - `/blog/sayfa/2/` ve üç cihaz kategorisi.
 
-Çayırova gerçek hizmet bölgesi olarak dizinde yer alır; özgün bilgi olmadan ayrı tekrar sayfası üretilmedi. Her marka/cihaz/ilçe kombinasyonu çoğaltılmadı. Sahte adres, şube, yorum, puan, garanti veya yetkili servis ilişkisi eklenmedi.
+Son düzenlemede Çayırova ile Siemens, Samsung, LG, Vestel, Altus, Profilo, Electrolux ve Whirlpool detayları eklendi. Önceki 29 içerik URL’si korunarak toplam **38 içerik sayfasına** ulaşıldı. Her marka/cihaz/ilçe kombinasyonu çoğaltılmadı. Sahte adres, şube, yorum, puan, garanti veya yetkili servis ilişkisi eklenmedi.
 
 ## Teknik SEO
 
@@ -42,18 +52,19 @@ Bu rapor önceki teslimatın yerine geçer. Mevcut Next.js mimarisi, tasarım di
 
 ## Doğrulama
 
-| Kontrol | Sonuç |
-| --- | --- |
-| ESLint | Başarılı |
-| TypeScript | Başarılı |
-| Production build | Başarılı; API endpoint’i route listesinde yok |
-| Playwright | **9/9 test geçti** |
-| Metadata ve bağlantılar | **29 sayfada** özgün title/description, tek H1, canonical, OG/Twitter, veri giriş elementi bulunmaması ve iç linkler kontrol edildi |
-| Responsive | 7 temsilî sayfa/şablon × **1440 / 768 / 375 px**; yatay taşma ve 12 px altı görünür metin yok |
-| Erişilebilirlik | Temsilî sayfalarda axe WCAG 2.2 AA etiketli tarama: ihlal yok |
-| Navigasyon | Ana/alt sayfa aktif menüsü, mobil menü kapanışı, SSS, sayfalama ve kategoriler başarılı |
-| İletişim | Tüm sayfalardaki telefon/WhatsApp href’leri; üç marka hazır mesajı; ayrı analitik olayları doğrulandı |
-| HTTP ve schema | 404, kaldırılmış API, sitemap/robots, iki ikincil hosttan 301, makale tarihi/başlığı ve kaynaklar doğrulandı |
+| Kontrol                 | Sonuç                                                                                                                                                          |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ESLint                  | Başarılı                                                                                                                                                       |
+| TypeScript              | Başarılı                                                                                                                                                       |
+| Production build        | Başarılı; API endpoint’i route listesinde yok                                                                                                                  |
+| Playwright              | **13/13 test geçti**; son favicon düzeltmesi ayrıca ilgili testle doğrulandı                                                                                   |
+| Metadata ve bağlantılar | **38 sayfada** özgün title/description, tek H1, canonical, OG/Twitter, veri giriş elementi bulunmaması ve iç linkler kontrol edildi                            |
+| Responsive              | 10 temsilî sayfa/şablon × **1440 / 768 / 375 px**; yatay taşma ve 12 px altı görünür metin yok                                                                 |
+| Erişilebilirlik         | Temsilî sayfalarda axe WCAG 2.2 AA etiketli tarama: ihlal yok                                                                                                  |
+| Navigasyon              | Ana/alt sayfa aktif menüsü, mobil menü kapanışı, SSS, sayfalama ve kategoriler başarılı                                                                        |
+| İletişim                | 11 marka ve üç ilçe kartı/detay mesajı, tüm telefon/WhatsApp href’leri, ayrı analitik olayları doğrulandı                                                      |
+| Kartlar ve varlıklar    | Eşit ilçe kartı yükseklikleri, alta hizalama, mobil tam genişlik, logo/favicon/manifest, harita bağlantıları ve onaysız müşteri verisinin gizliliği doğrulandı |
+| HTTP ve schema          | 404, kaldırılmış API, sitemap/robots, iki ikincil hosttan 301, makale tarihi/başlığı ve kaynaklar doğrulandı                                                   |
 
 Otomatik erişilebilirlik taraması tam bir manuel WCAG sertifikası değildir. Gerçek arama veya WhatsApp mesajı gönderilmedi; linkler ve olay akışı yerelde test edildi. Canlı DNS/hosting ve gerçek analitik kayıt teslimi bu görevde doğrulanmadı.
 
@@ -61,22 +72,26 @@ Otomatik erişilebilirlik taraması tam bir manuel WCAG sertifikası değildir. 
 
 Yerel production build, Microsoft Edge ve Lighthouse 12.8.2 mobil simülasyonu:
 
-| Ölçüm | Sonuç |
-| --- | --- |
-| Performans | **97** |
-| Erişilebilirlik | **100** |
-| En iyi uygulamalar | **100** |
-| SEO | **100** |
-| LCP | **2,4 sn** |
-| CLS | **0** |
-| TBT | **120 ms** |
+| Ölçüm              | Sonuç      |
+| ------------------ | ---------- |
+| Performans         | **98**     |
+| Erişilebilirlik    | **100**    |
+| En iyi uygulamalar | **100**    |
+| SEO                | **100**    |
+| LCP                | **2,4 sn** |
+| CLS                | **0**      |
+| TBT                | **60 ms**  |
 
 Önceki SEO 69 sonucu güncel değildir. LCP/CLS laboratuvar değerleridir; canlı hosting ve ağ koşulları farklı olabilir. INP saha verisi ölçülmedi; TBT, INP yerine sunulmaz. Lighthouse, sıralama garantisi vermez. Güncel [HTML raporu](reports/lighthouse-mobile.html) ve JSON `reports/` içindedir.
 
 ## Kalan yayın bilgileri
 
-İşletme adı, açık adres, çalışma saatleri, garanti koşulları ve Google profili hâlâ doğrulanmadı; bunlar uydurulmadı. Resmi işletme/veri sorumlusu bilgileriyle nihai gizlilik açıklaması tamamlanmalıdır. DNS/TLS ve iki domainin gerçek yönlendirmesi hosting üzerinde kurulup kontrol edilmelidir. Bu görev canlı yayın yapmadı.
+Site adı Beyaz Eşya Servisi olarak kesinleşti. Resmi işletme kimliği, açık adres, çalışma saatleri, garanti koşulları ve Google profili paylaşılmadı. Müşteri isim ve deneyimlerinin yayın onayı beklenmektedir. Harita gömmek isteğe bağlı API anahtarı gerektirir; anahtarsız bağlantılar hazırdır. Bu görev canlı yayın yapmadı.
 
 [Masaüstü](reports/desktop.png) · [Tablet](reports/tablet.png) · [Mobil](reports/mobile.png) · [İletişim](reports/contact-mobile.png) · [Arçelik mobil](reports/arcelik-mobile.png) · [Blog mobil](reports/blog-mobile.png)
+
+[Bölgeler masaüstü](reports/regions-desktop.png) · [Bölgeler mobil](reports/regions-mobile.png) · [Markalar masaüstü](reports/brands-desktop.png) · [Markalar mobil](reports/brands-mobile.png)
+
+Kaynaklar: [WhatsApp marka kaynakları](https://www.meta.com/brand/resources/whatsapp/whatsapp-brand/) ve [Google Maps URL belgeleri](https://developers.google.com/maps/documentation/urls/get-started).
 
 Kurulum: [README](README.md). Niyet ve içerik haritası: [SEO stratejisi](SEO-STRATEJISI.md).

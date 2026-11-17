@@ -29,11 +29,11 @@ export const brands: Brand[] = [
       },
       {
         heading: "Fırın ve kurutma makinesi için de destek",
-        text: "Fırının ısıtmaması, programı başlatmaması; kurutma makinesinin çamaşırları nemli bırakması veya bakım uyarısı vermesi için arıza tespiti talep edebilirsiniz. Ankastre cihazlarda erişim koşullarını görüşmede belirtin. Modelin parça durumu ve yapılacak işlem değerlendirilmeden sabit onarım sonucu veya süre sözü verilmez.",
+        text: "Fırının ısıtmaması, programı başlatmaması; kurutma makinesinin çamaşırları nemli bırakması veya bakım uyarısı vermesi için arıza tespiti talep edebilirsiniz. Ankastre cihazlarda erişim koşullarını görüşmede belirtin. Modelin parça durumu ve gerekli işlem inceleme sonrasında değerlendirilir.",
       },
       {
         heading: "Gebze ve Darıca’da Arçelik özel servis görüşmesi",
-        text: "Telefon veya WhatsApp üzerinden ilçe, mahalle, cihaz modeli ve arıza belirtisini iletin. Adres ve randevu uygunluğu birlikte netleşir. Onarımdan önce tespit bedelini, işçilik ve parça kalemlerini sorun. Bu hizmet Arçelik’in resmi yetkili servis hizmeti değildir; üretici garantisi devam eden cihazlarda önce garanti belgenizi ve resmi servis seçeneklerini değerlendirin.",
+        text: "Telefon veya WhatsApp üzerinden ilçe, mahalle, cihaz modeli ve arıza belirtisini iletin. Adres ve randevu uygunluğu birlikte netleşir. Onarımdan önce tespit bedelini, işçilik ve parça kalemlerini öğrenebilirsiniz.",
       },
     ],
   },
@@ -62,7 +62,7 @@ export const brands: Brand[] = [
       },
       {
         heading: "Özel servis kapsamı ve randevu",
-        text: "Gebze, Darıca ve Çayırova adresleri için bakım, arıza tespiti ve onarım görüşmesi yapabilirsiniz. Yerinde değerlendirme ve gerekiyorsa sonraki işlem, cihazın durumu ve adres koşulları görüşülerek planlanır. Marka adına resmi randevu oluşturulmaz. Bosch’un yetkili servisi değiliz; üretici garantisi ve marka kampanyaları hakkında resmi kanallardan bilgi alın.",
+        text: "Gebze, Darıca ve Çayırova adresleri için bakım, arıza tespiti ve onarım görüşmesi yapabilirsiniz. Yerinde değerlendirme ve gerekiyorsa sonraki işlem, cihazın durumu ve adres koşulları görüşülerek planlanır. Telefon veya WhatsApp üzerinden size uygun zaman aralığını paylaşabilirsiniz.",
       },
     ],
   },
@@ -90,7 +90,167 @@ export const brands: Brand[] = [
       },
       {
         heading: "Beko özel servise nasıl ulaşabilirsiniz?",
-        text: "Telefonla arayabilir veya hazır WhatsApp mesajını açıp cihaz ve ilçe bilgilerinizi ekleyebilirsiniz. İnceleme öncesinde kesin ücret veya aynı gün onarım taahhüdü verilmez; tespit, parça ve işçilik bilgileri görüşmede netleşir. Bağımsız özel teknik servis olarak çalışıyoruz. Beko adına hareket etmiyor, yetkili servis olduğumuzu iddia etmiyoruz.",
+        text: "Telefonla arayabilir veya hazır WhatsApp mesajını açıp cihaz ve ilçe bilgilerinizi ekleyebilirsiniz. Tespit, parça ve işçilik bilgileri görüşmede netleşir. Size uygun zaman aralığını ileterek servis ziyaretini birlikte planlayabilirsiniz.",
+      },
+    ],
+  },
+  {
+    slug: "siemens",
+    name: "Siemens",
+    title: "Siemens Beyaz Eşya Bakım ve Onarım | Gebze Özel Servis",
+    description:
+      "Siemens ankastre ve solo beyaz eşyalarınız için Gebze, Darıca ve Çayırova’da özel servis. Kurulum ve model bilgisiyle bakım veya onarım talebinizi iletin.",
+    intro:
+      "Siemens cihazınız ankastre bir mutfağın parçasıysa veya dar bir alana yerleştirilmişse, servis hazırlığında kurulum bilgisi de önem taşır. Beyaz eşyanızın modeli ve yaşadığınız sorunla birlikte bize ulaşabilirsiniz.",
+    sources: [],
+    sections: [
+      {
+        heading: "Ankastre cihaz için ziyaret hazırlığı",
+        text: "Fırın veya bulaşık makinesinin dolap içindeki yerleşimini görüşmede belirtin. Cihazı yuvasından çıkarmadan erişimi tarif edebilirsiniz. Bakım veya arıza tespiti için gereken çalışma alanını birlikte değerlendirelim.",
+      },
+      {
+        heading: "Program ve belirtiyi birlikte anlatın",
+        text: "Yarım kalan program, yıkama sonucundaki değişim veya soğutma kaybı için cihaz türünü ve modelini paylaşın. Sorunun hangi kullanımda tekrarlandığı, inceleme öncesinde ihtiyacı anlamaya yardımcı olur. Siemens beyaz eşyalarınız için üç hizmet ilçemizden telefonla veya WhatsApp üzerinden görüşebilirsiniz.",
+      },
+    ],
+  },
+  {
+    slug: "samsung",
+    name: "Samsung",
+    title: "Samsung Beyaz Eşya Tamiri | Gebze ve Çevresi Özel Servis",
+    description:
+      "Samsung çamaşır makinesi, buzdolabı ve diğer beyaz eşyalar için özel teknik servis. Gebze, Darıca ve Çayırova’dan model ve arıza bilgisiyle iletişime geçin.",
+    intro:
+      "Samsung çamaşır makineniz programı bitirmiyor veya buzdolabınız beklenen soğutmayı sağlamıyorsa, yaşadığınız değişimi bize anlatın. Gebze ve çevresinde bakım, arıza tespiti ve onarım için servis talebinizi alıyoruz.",
+    sources: [],
+    sections: [
+      {
+        heading: "Ekrandaki bilgiyi paylaşın",
+        text: "Ekranda bir uyarı görünüyorsa kodu olduğu gibi yazın veya fotoğrafını iletin. Modeli bilmeden koddan kesin arıza sonucu çıkarmak yerine cihazın çalışma durumuyla birlikte değerlendirme yapılır. Etikete erişmek için ağır cihazı yerinden oynatmanız gerekmez.",
+      },
+      {
+        heading: "Soğutma ve yıkama ihtiyaçları",
+        text: "Buzdolabında hangi bölmenin etkilendiğini; çamaşır makinesinde ise su alma, yıkama, tahliye veya sıkma aşamasından hangisinde sorun olduğunu belirtin. Bakım ya da tamir görüşmesini bu bilgilerle başlatabilir, adresinize uygun ziyaret planını öğrenebilirsiniz.",
+      },
+    ],
+  },
+  {
+    slug: "lg",
+    name: "LG",
+    title: "LG Buzdolabı ve Çamaşır Makinesi Tamiri | Özel Servis",
+    description:
+      "Gebze, Darıca ve Çayırova’da LG beyaz eşya bakım ve tamiri. Olağandışı ses, yıkama ve soğutma sorunları için bağımsız özel servisle doğrudan görüşün.",
+    intro:
+      "LG beyaz eşyanızın sesi, yıkama sonucu veya soğutma performansı değiştiğinde, gözlemlerinizi paylaşarak bakım ve onarım görüşmesi başlatabilirsiniz. Hizmetimizi Gebze, Darıca ve Çayırova’da sunuyoruz.",
+    sources: [],
+    sections: [
+      {
+        heading: "Sesin ne zaman çıktığını belirtin",
+        text: "Çamaşır makinesinde su boşalırken duyulan ses ile sıkma sırasındaki ses farklı gözlemlerdir. Kısa bir açıklama veya kayıt, yaşadığınız sorunu anlatmanızı kolaylaştırır. Cihazın içini açmadan model ve program bilgisini iletin.",
+      },
+      {
+        heading: "İnceleme ve onarım planı",
+        text: "LG buzdolabı, yıkama grubu ve diğer beyaz eşyalar için yapılacak işlem cihazın incelenmesiyle belirlenir. Gereken parça, işçilik ve ücret hakkında bilgi verildikten sonra onayınız alınır. Birden fazla cihaz için talebiniz varsa görüşmede hepsini belirtebilirsiniz.",
+      },
+    ],
+  },
+  {
+    slug: "vestel",
+    name: "Vestel",
+    title: "Vestel Beyaz Eşya Özel Servisi | Gebze, Darıca, Çayırova",
+    description:
+      "Vestel buzdolabı, çamaşır ve bulaşık makinesi, fırın ve kurutma makinesi için özel servis. Gebze ve çevresinde bakım ve arıza onarımını görüşün.",
+    intro:
+      "Vestel beyaz eşyalarınızın bakımını veya arıza onarımını tek iletişim hattından görüşebilirsiniz. Aynı evdeki buzdolabı ve çamaşır makinesi gibi birden fazla cihazın ihtiyacını ayrı ayrı değerlendiriyoruz.",
+    sources: [],
+    sections: [
+      {
+        heading: "Birden fazla cihaz için talep",
+        text: "Her cihazın modelini, belirtisini ve sorunun başlangıç zamanını ayrı yazın. Bir cihaz için bakım, diğeri için arıza tespiti istiyorsanız bu ayrımı belirtmeniz ziyaret hazırlığını kolaylaştırır. İlçe ve mahallenizle birlikte uygun zamanınızı da paylaşın.",
+      },
+      {
+        heading: "Kullanım sırasında değişen davranışlar",
+        text: "Daha uzun süren program, eşit pişirmeyen fırın veya soğutması azalan buzdolabı için gözlemlerinizi dinliyoruz. Servis incelemesinde işlem ve parça ihtiyacı açıklanır. Ücret bilgisiyle birlikte onarım seçeneklerini değerlendirip karar verebilirsiniz.",
+      },
+    ],
+  },
+  {
+    slug: "altus",
+    name: "Altus",
+    title: "Altus Beyaz Eşya Bakımı ve Tamiri | Gebze Özel Servis",
+    description:
+      "Altus beyaz eşyalarınız için Gebze, Darıca ve Çayırova’da bakım, arıza tespiti ve onarım. Model, program ve arıza bilgilerinizi telefon veya WhatsApp’tan iletin.",
+    intro:
+      "Altus cihazınızın günlük kullanımını aksatan bir sorunda veya bakım ihtiyacında bize ulaşabilirsiniz. Çamaşır ve bulaşık makinesi, buzdolabı, fırın ve kurutma makinesi taleplerini model bilgisiyle değerlendiriyoruz.",
+    sources: [],
+    sections: [
+      {
+        heading: "Su alma ve boşaltma belirtileri",
+        text: "Makine hiç su almıyor mu, program sonunda içinde su mu kalıyor? Görüşmede bu ayrımı ve ekrandaki uyarıyı paylaşın. Cihazı sökmeden edindiğiniz gözlemler arıza tespiti hazırlığına yardımcı olur.",
+      },
+      {
+        heading: "Bakım görüşmesinden ziyaret planına",
+        text: "Arıza dışında düzenli bakım talebiniz varsa cihazın kullanım durumunu ve en son yapılan işlemi anlatabilirsiniz. Gebze, Darıca veya Çayırova’daki adresiniz için ziyaret zamanı birlikte planlanır; yapılacak işlem ve ücret incelemeyle netleşir.",
+      },
+    ],
+  },
+  {
+    slug: "profilo",
+    name: "Profilo",
+    title: "Profilo Beyaz Eşya Tamiri ve Arıza Tespiti | Özel Servis",
+    description:
+      "Gebze ve çevresindeki Profilo beyaz eşyalar için bağımsız özel servis. Soğutma, yıkama ve pişirme sorunlarında modelinize göre bakım ve tamir görüşmesi yapın.",
+    intro:
+      "Profilo buzdolabınızın soğutması azaldığında, makineniz programı tamamlamadığında veya fırınınız beklediğiniz gibi pişirmediğinde özel servis için iletişime geçebilirsiniz. Gebze, Darıca ve Çayırova adreslerinden talep alıyoruz.",
+    sources: [],
+    sections: [
+      {
+        heading: "Model bilgisi neden istenir?",
+        text: "Aynı marka içindeki cihazların parça ve kurulum özellikleri değişebilir. Model etiketine kolayca erişebiliyorsanız bilgisini iletin; erişemiyorsanız görüşmede bunu söyleyin. Sadece dış görünüşe dayanarak parça seçimi yapılmaz.",
+      },
+      {
+        heading: "İşlem seçeneklerini öğrenin",
+        text: "Arıza tespitinden sonra onarımın kapsamı, varsa parça gereksinimi ve ücret konuşulur. Bakım talebinde hangi performans değişimini fark ettiğinizi de paylaşabilirsiniz. Telefon ve WhatsApp bağlantılarıyla ilçenizi belirterek doğrudan servis görüşmesi başlatabilirsiniz.",
+      },
+    ],
+  },
+  {
+    slug: "electrolux",
+    name: "Electrolux",
+    title: "Electrolux Beyaz Eşya Onarımı | Gebze Özel Teknik Servis",
+    description:
+      "Electrolux fırın, kurutma ve yıkama grubu ile buzdolabı için özel servis. Gebze, Darıca ve Çayırova’da model bazında bakım ve onarım seçeneklerini öğrenin.",
+    intro:
+      "Electrolux beyaz eşyanızda bakım veya tamir ihtiyacı için cihaz türünü ve modelini paylaşarak bize ulaşın. Fırın, kurutma makinesi, yıkama grubu ve buzdolabı taleplerini cihazın durumuna göre değerlendiriyoruz.",
+    sources: [],
+    sections: [
+      {
+        heading: "Pişirme ve kurutma sonucunu anlatın",
+        text: "Fırında ısının yetersiz kalması veya kurutma süresinin uzaması gibi belirtilerde seçtiğiniz programı ve sonucu belirtin. Ne beklediğinizi ve ne yaşadığınızı birlikte anlatmanız servis görüşmesini kolaylaştırır.",
+      },
+      {
+        heading: "Parça uygunluğu ve bakım kapsamı",
+        text: "Parça gerektiren işlemlerde uygunluk model bilgisi üzerinden değerlendirilir. Cihazın yaşı, daha önce gördüğü işlem ve mevcut durum hakkında bildiklerinizi paylaşabilirsiniz. İnceleme sonrası yapılabilecek işlem, ücret ve ziyaret planı sizinle görüşülür.",
+      },
+    ],
+  },
+  {
+    slug: "whirlpool",
+    name: "Whirlpool",
+    title: "Whirlpool Beyaz Eşya Tamiri | Gebze ve Darıca Özel Servis",
+    description:
+      "Whirlpool cihazlarınız için Gebze, Darıca ve Çayırova’da özel servis görüşmesi. Buzdolabı, yıkama grubu ve diğer beyaz eşyalarda bakım ve arıza onarımı.",
+    intro:
+      "Whirlpool beyaz eşyanız çalışmayı durdurduysa veya kullanımı etkileyen bir belirti gösteriyorsa model bilgisiyle servis talebinizi iletebilirsiniz. Bakım ve onarım kapsamını cihazınıza göre birlikte ele alıyoruz.",
+    sources: [],
+    sections: [
+      {
+        heading: "Arızanın tekrar ettiği koşullar",
+        text: "Sorun her çalıştırmada mı, belirli bir programda mı oluşuyor? Elektrik kesintisi veya taşıma sonrasında başladıysa bunu da görüşmede anlatın. Bu bilgiler cihaz incelemesinden önce yaşadığınız durumu anlamaya yardımcı olur.",
+      },
+      {
+        heading: "Adres ve cihaz bilgisiyle iletişim",
+        text: "Gebze, Darıca veya Çayırova’daki mahallenizi, cihaz türünü ve uygun zamanınızı WhatsApp mesajına ekleyebilirsiniz. Model bazında parça ihtiyacı ve yapılacak işlem değerlendirilir; servis ziyareti ve onarım ücreti hakkında doğrudan bilgi alabilirsiniz.",
       },
     ],
   },

@@ -26,7 +26,7 @@ export function ContactButton({
 }
 export function WhatsAppButton({
   context,
-  label = "WhatsApp’tan Yazın",
+  label = "WhatsApp'tan Yazın",
   compact = false,
 }: {
   context?: string;

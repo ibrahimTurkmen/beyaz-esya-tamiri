@@ -143,7 +143,7 @@ export const faq = [
   ],
   [
     "Aynı gün servis alabilir miyim?",
-    "Randevu uygunluğu bulunduğunuz ilçeye, ekip planına ve parça ihtiyacına bağlıdır. Talep bırakmak kesinleşmiş randevu anlamına gelmez; gün ve saat karşılıklı teyit edilmelidir.",
+    "Uygunluk bulunduğunuz ilçeye, çalışma planına ve parça ihtiyacına göre değerlendirilir. Telefon veya WhatsApp üzerinden size uygun ziyaret gününü ve saatini birlikte belirleyelim.",
   ],
   [
     "Onarımın garanti koşulları nelerdir?",

@@ -37,16 +37,15 @@ export default function BrandsPage() {
                 Çamaşır makinesi, buzdolabı, bulaşık makinesi, fırın ve kurutma
                 makinesi için bakım ve onarım.
               </p>
-              {brands.some((b) => b.name === brand) ? (
+              <div className="card-actions">
                 <Link href={brandHref(brand)}>
                   {brand} özel servis kapsamı →
                 </Link>
-              ) : (
                 <WhatsAppButton
                   context={`${brand} beyaz eşyamın tamiri`}
-                  label="Modeliniz için yazın"
+                  label={`${brand} İçin Yazın`}
                 />
-              )}
+              </div>
             </div>
           ))}
       </div>
@@ -55,8 +54,7 @@ export default function BrandsPage() {
         <p>
           Diğer markalar için de cihaz türünü, modelini ve arızayı
           iletebilirsiniz. Servis planı ve parça bulunabilirliği model bazında
-          teyit edilir. Her parça veya model için kesin onarım taahhüdü
-          verilmez.
+          görüşülür.
         </p>
         <h2>Üretici garantisi devam eden cihazlar</h2>
         <p>

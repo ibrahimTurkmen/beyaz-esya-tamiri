@@ -57,7 +57,7 @@ export default function ContactPage() {
           <div className="related-links">
             <Link href="/hizmet-bolgeleri/gebze/">Gebze</Link>
             <Link href="/hizmet-bolgeleri/darica/">Darıca</Link>
-            <Link href="/hizmet-bolgeleri/#cayirova">Çayırova</Link>
+            <Link href="/hizmet-bolgeleri/cayirova/">Çayırova</Link>
           </div>
           {business.hours && (
             <>
@@ -71,11 +71,6 @@ export default function ContactPage() {
               <p>{business.address}</p>
             </>
           )}
-          <div className="notice">
-            Bağımsız özel teknik servis. Markaların yetkili servisi değildir.
-            Telefon veya WhatsApp görüşmesi, tek başına kesinleşmiş randevu veya
-            ücret onayı anlamına gelmez.
-          </div>
         </aside>
       </div>
     </ContentPage>

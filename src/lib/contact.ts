@@ -1,6 +1,9 @@
 export const defaultMessage =
   "Merhaba, beyaz eşya tamiri için servis talebi oluşturmak istiyorum.";
 export function contactMessage(context?: string) {
+  const brand = context?.match(/^(.+) beyaz eşyamın tamiri$/)?.[1];
+  if (brand)
+    return `Merhaba, ${brand} beyaz eşyam için teknik servis hizmeti almak istiyorum.`;
   return context
     ? `Merhaba, ${context} için servis talebi oluşturmak istiyorum.`
     : defaultMessage;
@@ -13,13 +16,22 @@ export function routeContactContext(path: string): string | undefined {
     "/markalar/arcelik": "Arçelik beyaz eşyamın tamiri",
     "/markalar/bosch": "Bosch beyaz eşyamın tamiri",
     "/markalar/beko": "Beko beyaz eşyamın tamiri",
+    "/markalar/siemens": "Siemens beyaz eşyamın tamiri",
+    "/markalar/samsung": "Samsung beyaz eşyamın tamiri",
+    "/markalar/lg": "LG beyaz eşyamın tamiri",
+    "/markalar/vestel": "Vestel beyaz eşyamın tamiri",
+    "/markalar/altus": "Altus beyaz eşyamın tamiri",
+    "/markalar/profilo": "Profilo beyaz eşyamın tamiri",
+    "/markalar/electrolux": "Electrolux beyaz eşyamın tamiri",
+    "/markalar/whirlpool": "Whirlpool beyaz eşyamın tamiri",
     "/buzdolabi-tamiri": "buzdolabı tamiri",
     "/camasir-makinesi-tamiri": "çamaşır makinesi tamiri",
     "/bulasik-makinesi-tamiri": "bulaşık makinesi tamiri",
     "/firin-tamiri": "fırın tamiri",
     "/kurutma-makinesi-tamiri": "kurutma makinesi tamiri",
-    "/hizmet-bolgeleri/gebze": "Gebze’de beyaz eşya tamiri",
-    "/hizmet-bolgeleri/darica": "Darıca’da beyaz eşya tamiri",
+    "/hizmet-bolgeleri/gebze": "Gebze'de beyaz eşya tamiri",
+    "/hizmet-bolgeleri/darica": "Darıca'da beyaz eşya tamiri",
+    "/hizmet-bolgeleri/cayirova": "Çayırova'da beyaz eşya tamiri",
   };
   const normalized = path.replace(/\/$/, "");
   if (contexts[normalized]) return contexts[normalized];
