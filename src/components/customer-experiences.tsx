@@ -2,36 +2,60 @@ import {
   customerExperiences,
   publishableExperiences,
 } from "@/content/customer-experiences";
+import { business } from "@/lib/business";
+import { Icon } from "./icon";
+import { ExperienceSlider } from "./experience-slider";
 
 export function CustomerExperiences() {
-  const entries = publishableExperiences(customerExperiences);
-  if (!entries.length) return null;
+  // Filter on the server; only approved public fields reach the browser.
+  const entries = publishableExperiences(customerExperiences).map(
+    ({ id, name, appliance, summary }) => ({ id, name, appliance, summary }),
+  );
   return (
-    <section
-      className="container experiences-section"
-      aria-labelledby="experiences-title"
-    >
-      <div className="section-heading">
-        <div>
-          <p className="eyebrow">ONARIM SONRASI DENEYİMLER</p>
-          <h2 id="experiences-title">Müşterilerimizin deneyimleri</h2>
-        </div>
-      </div>
-      <p className="experience-intro">
-        Müşterilerimizin paylaştığı geri bildirimlerden hazırlanan deneyim
-        özetleri.
-      </p>
-      <div className="experience-grid">
-        {entries.map((entry) => (
-          <article key={entry.id} className="experience-card">
-            <p>{entry.summary}</p>
-            <div>
-              <h3>{entry.name}</h3>
-              <span>{entry.appliance}</span>
-            </div>
-          </article>
-        ))}
-      </div>
+    <section className="customer-panel" aria-labelledby="customer-panel-title">
+      <p className="eyebrow">ŞEFFAF İLETİŞİM</p>
+      {entries.length ? (
+        <>
+          <h2 id="customer-panel-title">
+            Müşterilerimizin <span>deneyimleri.</span>
+          </h2>
+          <p className="experience-intro">
+            Müşterilerimizin paylaştığı geri bildirimlerden hazırlanan deneyim
+            özetleri.
+          </p>
+          <ExperienceSlider entries={entries} />
+        </>
+      ) : (
+        <>
+          <h2 id="customer-panel-title">
+            Karar verirken
+            <br />
+            <span>doğru bilgiye bakın.</span>
+          </h2>
+          <p>
+            Servis seçmeden önce işletmenin güncel bilgilerini, gerçek müşteri
+            deneyimlerini ve işlem koşullarını inceleyin.
+          </p>
+          <div className="review-note">
+            <Icon name="shield" size={24} />
+            <span>
+              İşlem ve ücret hakkında bilgi alın,
+              <br />
+              kararınızı açıklıkla verin.
+            </span>
+          </div>
+        </>
+      )}
+      {business.googleUrl && (
+        <a
+          href={business.googleUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-link"
+        >
+          Google’daki yorumları inceleyin <Icon name="arrow" size={17} />
+        </a>
+      )}
     </section>
   );
 }

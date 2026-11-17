@@ -7,8 +7,9 @@ export type CustomerExperience = {
   approvalDate: string | null;
 };
 
-// Editorial records only. These must never be passed to a client component.
+// Editorial records only. Only approved public fields may reach a client component.
 // Approval covers both the name and this experience summary; no verbatim quotes.
+// Publication consent for the five named customers was confirmed by the user on 2026-11-17.
 export const customerExperiences: CustomerExperience[] = [
   {
     id: "experience-01",
@@ -16,8 +17,8 @@ export const customerExperiences: CustomerExperience[] = [
     appliance: "Samsung çamaşır makinesi",
     summary:
       "Çamaşır makinesindeki sorunun hızlı çözülmesinden ve yapılan işlemden memnun kaldığını belirtti.",
-    publicationApproved: false,
-    approvalDate: null,
+    publicationApproved: true,
+    approvalDate: "2026-11-17",
   },
   {
     id: "experience-02",
@@ -25,8 +26,8 @@ export const customerExperiences: CustomerExperience[] = [
     appliance: "Vestel buzdolabı ve çamaşır makinesi",
     summary:
       "İki cihazı için yapılan işlemlerden memnun kaldığını ve sorunların hızlı çözüldüğünü paylaştı.",
-    publicationApproved: false,
-    approvalDate: null,
+    publicationApproved: true,
+    approvalDate: "2026-11-17",
   },
   {
     id: "experience-03",
@@ -34,8 +35,8 @@ export const customerExperiences: CustomerExperience[] = [
     appliance: "Arçelik çamaşır makinesi",
     summary:
       "Çamaşır makinesinin onarımıyla ilgili memnuniyetini ve sorunun hızlı giderildiğini iletti.",
-    publicationApproved: false,
-    approvalDate: null,
+    publicationApproved: true,
+    approvalDate: "2026-11-17",
   },
   {
     id: "experience-04",
@@ -43,17 +44,17 @@ export const customerExperiences: CustomerExperience[] = [
     appliance: "Bosch buzdolabı",
     summary:
       "Buzdolabındaki sorunun çözümünden memnun kaldığını, işlemin hızlı sonuçlandığını belirtti.",
-    publicationApproved: false,
-    approvalDate: null,
+    publicationApproved: true,
+    approvalDate: "2026-11-17",
   },
   {
     id: "experience-05",
     name: "Ahmed Fevzi Yüksel",
-    appliance: "",
+    appliance: "Beko çamaşır makinesi ve Siemens bulaşık makinesi",
     summary:
-      "Yapılan işlemden memnun kaldığını ve sorunun hızlı çözüldüğünü paylaştı.",
-    publicationApproved: false,
-    approvalDate: null,
+      "Çamaşır ve bulaşık makineleri için aldığı hizmetten memnun kaldığını ve arızaların hızlı giderildiğini belirtti.",
+    publicationApproved: true,
+    approvalDate: "2026-11-17",
   },
   ...Array.from({ length: 5 }, (_, i) => ({
     id: `experience-${String(i + 6).padStart(2, "0")}`,

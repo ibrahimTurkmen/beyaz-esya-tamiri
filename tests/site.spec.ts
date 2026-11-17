@@ -150,22 +150,96 @@ test("Yayın onayı ve cihaz bilgisi olmayan müşteri kayıtları gizlidir", as
   request,
 }) => {
   expect(customerExperiences).toHaveLength(10);
-  expect(publishableExperiences(customerExperiences)).toEqual([]);
+  const published = publishableExperiences(customerExperiences);
+  expect(published).toHaveLength(5);
   const fixture = {
     ...customerExperiences[0],
     publicationApproved: true,
     approvalDate: "2026-11-17",
   };
   expect(publishableExperiences([fixture])).toHaveLength(1);
+  expect(
+    publishableExperiences([{ ...fixture, publicationApproved: false }]),
+  ).toEqual([]);
   expect(publishableExperiences([{ ...fixture, appliance: "" }])).toEqual([]);
   expect(publishableExperiences([{ ...fixture, approvalDate: null }])).toEqual(
     [],
   );
   const html = await (await request.get("/")).text();
-  for (const entry of customerExperiences.filter((e) => e.name))
-    expect(html).not.toContain(entry.name);
+  for (const entry of customerExperiences.filter((e) => e.name)) {
+    if (published.some((p) => p.id === entry.id))
+      expect(html).toContain(entry.name);
+    else expect(html).not.toContain(entry.name);
+  }
   expect(html).not.toContain("aggregateRating");
-  expect(html).not.toContain("experiences-title");
+  expect(html).not.toContain('"approvalDate"');
+});
+
+test("Onaylı beş deneyim Şeffaf İletişim slider’ında kaydırma ve klavyeyle gezilir", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  for (const width of [1440, 768, 375]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    const panel = page.locator(".questions-section .customer-panel");
+    const cards = panel.locator(".experience-card");
+    const track = panel.locator(".experience-track");
+    const counter = panel.locator(".experience-count");
+    const previous = panel.getByRole("button", {
+      name: "Önceki müşteri deneyimi",
+    });
+    const next = panel.getByRole("button", {
+      name: "Sonraki müşteri deneyimi",
+    });
+    await expect(panel.locator(".eyebrow")).toHaveText("ŞEFFAF İLETİŞİM");
+    await expect(cards).toHaveCount(5);
+    const sliderAccessibility = await new AxeBuilder({ page })
+      .include(".experience-slider")
+      .analyze();
+    expect(sliderAccessibility.violations).toEqual([]);
+    await expect(cards.locator("img, svg, blockquote")).toHaveCount(0);
+    for (const [index, entry] of publishableExperiences(
+      customerExperiences,
+    ).entries()) {
+      await expect(cards.nth(index).locator("h3")).toHaveText(entry.name);
+      await expect(
+        cards.nth(index).locator(".experience-person span"),
+      ).toHaveText(entry.appliance);
+    }
+    await panel.scrollIntoViewIfNeeded();
+    await expect(counter).toHaveText("1 / 5");
+    await expect(previous).toBeDisabled();
+    await panel.screenshot({ path: `reports/experiences-${width}.png` });
+    await next.click();
+    await expect(counter).toHaveText("2 / 5");
+    await previous.click();
+    await expect(counter).toHaveText("1 / 5");
+    await track.focus();
+    await page.keyboard.press("End");
+    await expect(counter).toHaveText("5 / 5");
+    await expect(next).toBeDisabled();
+    await panel.screenshot({ path: `reports/experiences-last-${width}.png` });
+    await page.keyboard.press("ArrowLeft");
+    await expect(counter).toHaveText("4 / 5");
+    await page.keyboard.press("Home");
+    await expect(counter).toHaveText("1 / 5");
+    // Native scrolling (also used by a touch swipe) must update the controls.
+    await track.evaluate((el) =>
+      el.scrollTo({ left: el.clientWidth + 16, behavior: "instant" }),
+    );
+    await expect(counter).toHaveText("2 / 5");
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+  }
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await expect(page.locator(".experience-count")).toHaveText("2 / 5");
+  await page.locator(".experience-track").focus();
+  await page.keyboard.press("End");
+  await expect(page.locator(".experience-count")).toHaveText("5 / 5");
 });
 
 test("Google harita bağlantıları hafif; yeni logo ve uygulama ikonları sunulur", async ({

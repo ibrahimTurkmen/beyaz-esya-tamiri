@@ -240,43 +240,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <CustomerExperiences />
       <section className="container questions-section">
-        <div className="customer-panel">
-          <p className="eyebrow">ŞEFFAF İLETİŞİM</p>
-          <h2>
-            Karar verirken
-            <br />
-            <span>doğru bilgiye bakın.</span>
-          </h2>
-          <p>
-            Servis seçmeden önce işletmenin güncel bilgilerini, gerçek müşteri
-            deneyimlerini ve işlem koşullarını inceleyin.
-          </p>
-          {business.googleUrl ? (
-            <a
-              href={business.googleUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-link"
-            >
-              Google’daki yorumları inceleyin
-              <Icon name="arrow" size={17} />
-            </a>
-          ) : (
-            <div className="review-note">
-              <Icon name="shield" size={24} />
-              <span>
-                İşlem ve ücret hakkında bilgi alın,
-                <br />
-                kararınızı açıklıkla verin.
-              </span>
-            </div>
-          )}
-          <span className="large-quote" aria-hidden="true">
-            “
-          </span>
-        </div>
+        <CustomerExperiences />
         <div className="faq">
           <div className="section-heading">
             <h2>Sıkça sorulan sorular</h2>

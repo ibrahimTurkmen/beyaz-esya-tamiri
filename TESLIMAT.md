@@ -10,7 +10,7 @@ Bu rapor önceki teslimatın yerine geçer. Mevcut Next.js mimarisi, tasarım di
 - **11 marka kartının tamamında** detay bağlantısı ve “{Marka} İçin Yazın” düğmesi vardır. Marka mesajı merkezi yardımcıdan “Merhaba, {Marka} beyaz eşyam için teknik servis hizmeti almak istiyorum.” olarak üretilir. Eksik sekiz marka detay sayfası, özgün hizmet içeriği ve telefon/WhatsApp CTA’larıyla tamamlandı.
 - **Beyaz Eşya Servisi** adı korundu. Özgün SVG logo header/footer, SVG favicon, çok boyutlu ICO, Apple ve uygulama ikonlarında kullanılır. WhatsApp simgesi resmi `whatsapp.com` SVG yollarıyla değiştirildi.
 - Eski çizim kaldırıldı. **Google Maps anahtarı yokken çalışan bölge görünümü ve ilçe bağlantıları** gösterilir. İsteğe bağlı `GOOGLE_MAPS_EMBED_KEY` girildiğinde harita kullanıcı tıklamasıyla yüklenir; sahte işletme pini yoktur. Mevcut anahtarsız sürüm başlangıçta Google isteği yapmaz.
-- Müşteri deneyimleri için 10 kayıt alanı ve sade kart bileşeni hazırlandı. **Yayın onayı verilmediği için tüm kayıtlar gizlidir.** İsim, cihaz, özet ve tarihli yayın onayı eksiksiz olmadan kayıt gösterilmez. Dört cihaz bilgisi mevcut, Ahmed Fevzi Yüksel’in cihazı ve beş yeni kayıt eksiktir. Yıldız, avatar, Google yorumu veya uydurulmuş doğrudan alıntı yoktur. Yönetim ayrıntıları README’dedir.
+- **Beş müşterinin yayın onayı kullanıcı tarafından 17 Kasım 2026’da doğrulandı ve kayıtlar görünür yapıldı.** Ahmed Baki, İkra Oku, Merve İnce, Hayrettin Basir ve Ahmed Fevzi Yüksel; isim, bilinen cihazlar ve deneyim özetleriyle anasayfadaki **Şeffaf İletişim** alanında yer alır. Fotoğraf, avatar, puan ve doğrudan alıntı yoktur. Slider mobil kaydırma, yön düğmeleri ve klavyeyle çalışır; yeni bağımlılık eklenmedi. Beş boş kayıt gizlidir; onaysız/eksik kayıtlar sunucuda elenir. Yönetim ayrıntıları README’dedir.
 
 ## İletişim ve arayüz
 
@@ -57,7 +57,7 @@ Son düzenlemede Çayırova ile Siemens, Samsung, LG, Vestel, Altus, Profilo, El
 | ESLint                  | Başarılı                                                                                                                                                       |
 | TypeScript              | Başarılı                                                                                                                                                       |
 | Production build        | Başarılı; API endpoint’i route listesinde yok                                                                                                                  |
-| Playwright              | **13/13 test geçti**; son favicon düzeltmesi ayrıca ilgili testle doğrulandı                                                                                   |
+| Playwright              | **14/14 test geçti**; beş yorum, onay filtresi, slider düğmeleri/klavye/kaydırma ve ekran boyutu değişimi dahil                                                |
 | Metadata ve bağlantılar | **38 sayfada** özgün title/description, tek H1, canonical, OG/Twitter, veri giriş elementi bulunmaması ve iç linkler kontrol edildi                            |
 | Responsive              | 10 temsilî sayfa/şablon × **1440 / 768 / 375 px**; yatay taşma ve 12 px altı görünür metin yok                                                                 |
 | Erişilebilirlik         | Temsilî sayfalarda axe WCAG 2.2 AA etiketli tarama: ihlal yok                                                                                                  |
@@ -74,23 +74,27 @@ Yerel production build, Microsoft Edge ve Lighthouse 12.8.2 mobil simülasyonu:
 
 | Ölçüm              | Sonuç      |
 | ------------------ | ---------- |
-| Performans         | **98**     |
+| Performans         | **96**     |
 | Erişilebilirlik    | **100**    |
 | En iyi uygulamalar | **100**    |
 | SEO                | **100**    |
-| LCP                | **2,4 sn** |
+| LCP                | **2,6 sn** |
 | CLS                | **0**      |
-| TBT                | **60 ms**  |
+| TBT                | **70 ms**  |
 
 Önceki SEO 69 sonucu güncel değildir. LCP/CLS laboratuvar değerleridir; canlı hosting ve ağ koşulları farklı olabilir. INP saha verisi ölçülmedi; TBT, INP yerine sunulmaz. Lighthouse, sıralama garantisi vermez. Güncel [HTML raporu](reports/lighthouse-mobile.html) ve JSON `reports/` içindedir.
 
+Bu ölçüm, beş onaylı müşteri deneyimi ve slider erişilebilirlik düzeltmesini içerir. Önceki ölçümde performans 98 idi; güncel ölçüm 96’dır. Tam test turu 14/14 başarılı; son ARIA düzeltmesinden sonra onay filtresi ve slider testleri ayrıca 2/2 başarılıdır. Slider’ın tam axe taramasında ihlal bulunmadı.
+
 ## Kalan yayın bilgileri
 
-Site adı Beyaz Eşya Servisi olarak kesinleşti. Resmi işletme kimliği, açık adres, çalışma saatleri, garanti koşulları ve Google profili paylaşılmadı. Müşteri isim ve deneyimlerinin yayın onayı beklenmektedir. Harita gömmek isteğe bağlı API anahtarı gerektirir; anahtarsız bağlantılar hazırdır. Bu görev canlı yayın yapmadı.
+Site adı Beyaz Eşya Servisi olarak kesinleşti. Resmi işletme kimliği, açık adres, çalışma saatleri, garanti koşulları ve Google profili paylaşılmadı. Beş müşteri kaydı onaylıdır; yeni kayıtlar için yayın onayı gerekir. Harita gömmek isteğe bağlı API anahtarı gerektirir; anahtarsız bağlantılar hazırdır. Bu görev canlı yayın yapmadı.
 
 [Masaüstü](reports/desktop.png) · [Tablet](reports/tablet.png) · [Mobil](reports/mobile.png) · [İletişim](reports/contact-mobile.png) · [Arçelik mobil](reports/arcelik-mobile.png) · [Blog mobil](reports/blog-mobile.png)
 
 [Bölgeler masaüstü](reports/regions-desktop.png) · [Bölgeler mobil](reports/regions-mobile.png) · [Markalar masaüstü](reports/brands-desktop.png) · [Markalar mobil](reports/brands-mobile.png)
+
+[Yorumlar masaüstü](reports/experiences-1440.png) · [Yorumlar mobil](reports/experiences-375.png) · [Beşinci yorum mobil](reports/experiences-last-375.png)
 
 Kaynaklar: [WhatsApp marka kaynakları](https://www.meta.com/brand/resources/whatsapp/whatsapp-brand/) ve [Google Maps URL belgeleri](https://developers.google.com/maps/documentation/urls/get-started).
 

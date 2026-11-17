@@ -55,21 +55,37 @@
   text-align: center;
   color: var(--muted);
 }
-.experiences-section {
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
 .experience-intro {
   color: var(--muted);
   margin-bottom: 24px;
   font-size: 16px;
 }
-.experience-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
+.questions-section > * {
+  min-width: 0;
+}
+.experience-slider {
+  margin-top: 24px;
+}
+.experience-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: #a8bdd2 transparent;
+  padding-bottom: 12px;
+  border-radius: 14px;
+}
+.experience-track:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: -3px;
 }
 .experience-card {
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -77,15 +93,14 @@
   border: 1px solid var(--border);
   border-top: 3px solid var(--blue);
   border-radius: 12px;
-  background: white;
-  box-shadow: 0 8px 24px #09284708;
+  background: linear-gradient(145deg, #fff, #f3f8ff);
 }
 .experience-card p {
   color: var(--muted);
   font-size: 16px;
   line-height: 1.7;
 }
-.experience-card > div {
+.experience-card .experience-person {
   margin-top: auto;
   padding-top: 18px;
   border-top: 1px solid var(--border);
@@ -98,19 +113,61 @@
   font-size: 14px;
   color: var(--muted);
 }
+.experience-card .experience-kicker {
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  font-weight: 700;
+  color: var(--blue);
+}
+.experience-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+.experience-count {
+  font-size: 14px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.experience-controls > div {
+  display: flex;
+  gap: 10px;
+}
+.experience-controls button {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--navy);
+  background: white;
+  cursor: pointer;
+  font-size: 24px;
+}
+.experience-controls button:hover:not(:disabled) {
+  border-color: var(--blue);
+  background: #edf5ff;
+}
+.experience-controls button:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+.experience-controls button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
 .button svg,
 .whatsapp svg {
   flex-shrink: 0;
   display: block;
 }
-@media (max-width: 900px) {
-  .experience-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
 @media (max-width: 600px) {
-  .experience-grid {
-    grid-template-columns: 1fr;
+  .experience-card {
+    padding: 24px;
+    gap: 20px;
   }
   .map-placeholder {
     padding: 24px 18px;
